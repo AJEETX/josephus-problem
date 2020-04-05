@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Demo.Library.Model;
 using System.Linq;
-using System.Text;
+using System;
 
 namespace Demo.Library.Domain
 {
@@ -18,19 +17,27 @@ namespace Demo.Library.Domain
                 return new ResultData {
                     HasError=true
                 };
-
-
-            var allChildrenRemovedIncludingWinner = _childrenInCircleService.GetRemovedChildrenInOrderIncludingLastChildAsWinner(childrenCount, stepCount);
-
-            var removedChildren = allChildrenRemovedIncludingWinner.Take(childrenCount - 1);
-
-            var Winner = allChildrenRemovedIncludingWinner.Last();
-
-            return new ResultData
+            var result = default(ResultData);
+            try
             {
-                RemovedChildrenSequence = removedChildren,
-                WinningChild = Winner
-            };
+                var allChildrenRemovedIncludingWinner = _childrenInCircleService.GetRemovedChildrenInOrderIncludingLastChildAsWinner(childrenCount, stepCount);
+
+                var removedChildren = allChildrenRemovedIncludingWinner.Take(childrenCount - 1);
+
+                var Winner = allChildrenRemovedIncludingWinner.Last();
+
+                result= new ResultData
+                {
+                    RemovedChildrenSequence = removedChildren,
+                    WinningChild = Winner,
+                    HasError = false
+                };
+            }
+            catch (Exception)
+            {
+                //log// throw
+            }
+            return result;
         }
     }
 }

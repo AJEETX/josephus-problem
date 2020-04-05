@@ -1,11 +1,10 @@
 ﻿using Demo.Library.Domain;
 using Demo.Library.Infrastructure;
+using Demo.Library.Model;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace Demo.Library.Test.Domain

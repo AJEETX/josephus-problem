@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System;
 
 namespace Demo.Library.Domain
 {
@@ -19,15 +18,24 @@ namespace Demo.Library.Domain
         }
         int FindChild2Remove(int childrenCount, int stepCount, int sequence)
         {
-
-            var child2BeRemoved = stepCount * sequence;
-
-            while (child2BeRemoved > childrenCount)
+            if (childrenCount < 1 || stepCount < 1)
+                return 0;
+            var child2BeRemoved = default(int);
+            try
             {
-                var temp = (child2BeRemoved - childrenCount - 1) / (stepCount - 1);
+                child2BeRemoved = stepCount * sequence;
 
-                child2BeRemoved = temp + child2BeRemoved - childrenCount;
+                while (child2BeRemoved > childrenCount)
+                {
+                    var temp = (child2BeRemoved - childrenCount - 1) / (stepCount - 1);
 
+                    child2BeRemoved = temp + child2BeRemoved - childrenCount;
+
+                }
+            }
+            catch (Exception)
+            {
+                // log //throw;
             }
             return child2BeRemoved;
         }
