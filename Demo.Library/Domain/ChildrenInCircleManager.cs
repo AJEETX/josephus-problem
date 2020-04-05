@@ -14,6 +14,12 @@ namespace Demo.Library.Domain
         }
         public static ResultData GetResult(int childrenCount, int stepCount)
         {
+            if (childrenCount < 1 || stepCount < 1)
+                return new ResultData {
+                    HasError=true
+                };
+
+
             var allChildrenRemovedIncludingWinner = _childrenInCircleService.GetRemovedChildrenInOrderIncludingLastChildAsWinner(childrenCount, stepCount);
 
             var removedChildren = allChildrenRemovedIncludingWinner.Take(childrenCount - 1);

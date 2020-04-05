@@ -8,5 +8,6 @@ namespace Demo.Library
     {
         public IEnumerable<int> RemovedChildrenSequence { get; set; }
         public int WinningChild { get; set; }
+        public bool HasError { get; set; }
     }
 }
