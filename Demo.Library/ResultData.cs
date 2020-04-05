@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Josephus.Library
+namespace Demo.Library
 {
-    class ResultData
+    public class ResultData
     {
         public IEnumerable<int> RemovedChildrenSequence { get; set; }
         public int WinningChild { get; set; }
